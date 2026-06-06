@@ -1,22 +1,75 @@
-" This is a compromise that allows the user to copy text from the
-"   terminal with the mouse and move the cursor in the command line.
-" To copy to the clipboard from the document body, select the desired
-"   text, press the right mouse button (RMB) to show context menu,
-"   and then select 'Copy'. When using the command line, like after
-"   typing ':%s/foot/bar/', use SHIFT+RMB > Copy to copy and click
-"   the mouse button to position the cursor.
-" Use `set mouse=nvi` to enable mouse controls and copy-paste when
-"   shift is pressed.
-"
-
-inoremap jj <Esc>
-inoremap jk <Esc>
+" jj / jk      入力モードから戻る
+" Space w      保存
+" Space q      閉じる
+" Space x      保存して閉じる
+" Space e      ファイルツリー
+" Space t      下にターミナル
+" Space h/j/k/l ペイン移動
+" Shift+矢印   選択
+" Space y      Vim内コピー
+" Space p      Vim内貼り付け
+" Space a      全選択
 
 set nocompatible
 set number
 set backspace=indent,eol,start
-set mouse=
 set tabstop=4
 set shiftwidth=4
+set expandtab
+set hidden
+set nowrap
+set mouse=nvi
 
 syntax on
+
+let mapleader = " "
+
+inoremap jj <Esc>
+inoremap jk <Esc>
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>x :x<CR>
+
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
+
+nnoremap <leader>e :Lexplore<CR>
+
+nnoremap <leader>t :botright terminal<CR>
+
+tnoremap jj <C-\><C-n>
+
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+nnoremap <S-Left>  v<Left>
+nnoremap <S-Right> v<Right>
+nnoremap <S-Up>    v<Up>
+nnoremap <S-Down>  v<Down>
+
+vnoremap <S-Left>  <Left>
+vnoremap <S-Right> <Right>
+vnoremap <S-Up>    <Up>
+vnoremap <S-Down>  <Down>
+
+vnoremap <leader>y y
+nnoremap <leader>p p
+vnoremap <leader>p p
+
+nnoremap <leader>a ggVG
+nnoremap <leader>n :nohlsearch<CR>
+
+set laststatus=2
+
+set statusline=
+set statusline+=jj:ESC
+set statusline+=\ \|\ SPC-e:Tree
+set statusline+=\ \|\ SPC-t:Term
+set statusline+=\ \|\ Shift+Arrows:Select
+set statusline+=\ \|\ SPC-y:Copy
+set statusline+=\ \|\ SPC-p:Paste
+set statusline+=\ \|\ SPC-a:SelectAll
