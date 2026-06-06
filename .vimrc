@@ -38,7 +38,6 @@ let g:netrw_liststyle = 3
 nnoremap <leader>e :Lexplore<CR>
 
 nnoremap <leader>t :botright terminal<CR>
-
 tnoremap jj <C-\><C-n>
 
 nnoremap <leader>h <C-w>h
@@ -56,6 +55,14 @@ vnoremap <S-Right> <Right>
 vnoremap <S-Up>    <Up>
 vnoremap <S-Down>  <Down>
 
+vnoremap <BS> d
+vnoremap <Del> d
+
+vnoremap <Left>  <Esc><Left>
+vnoremap <Right> <Esc><Right>
+vnoremap <Up>    <Esc><Up>
+vnoremap <Down>  <Esc><Down>
+
 vnoremap <leader>y y
 nnoremap <leader>p p
 vnoremap <leader>p p
@@ -64,7 +71,6 @@ nnoremap <leader>a ggVG
 nnoremap <leader>n :nohlsearch<CR>
 
 set laststatus=2
-
 set statusline=
 set statusline+=jj:ESC
 set statusline+=\ \|\ SPC-e:Tree
